@@ -24,7 +24,18 @@ modbus_sample = ['{protocol:modbus,func:1}',
                  '{protocol:modbus,func:3,startaddr:1000,endaddr:1}',
                  '{protocol:modbus,func:1,length:22,type:good}',
                  '{protocol:modbus,func:1,length:32,type:good}']
-dnp3_sample = []
+
+dnp3_sample = ['{protocol:dnp3,func:21,obj:"{0x3c02,0x3c03,0x3c04}"}'
+               '{protocol:dnp3,func:3,obj:"{3073}"}',
+               '{protocol:dnp3,func:129,obj:"{10498}"}',
+               '{protocol:dnp3,func:1,obj:"{15362,15363,15364,2560}"}',
+               '{protocol:dnp3,func:1,obj:"{15362,15363,15364,15361}"}',
+               '{protocol:dnp3,func:1,obj:"{15362,15363,15364}"}',
+               '{protocol:dnp3,func:1,obj:"{15362,15363,15364,2560}"}',
+               '{protocol:dnp3,func:3,obj:"{10498}"}',
+               '{protocol:dnp3,func:1,obj:"{512}"}',
+               '{protocol:dnp3,func:1,obj:"{15362,15363,15364,10240}"}',
+               '{protocol:dnp3,func:21,obj:"{0x3c02,0x3c03,0x3c04}"}']
 
 
 # network node
@@ -69,8 +80,10 @@ class Node:
                 dataflow.append(', '.join([dest.ip, self.ip, modbusmsg, dt.datetime.now().strftime('%m/%d/%Y-%H:%M:%S.%f'),
                                       '1', dest.mac, self.mac]))
 
-
-
+            if protocol == 'dnp3':
+                dnp3msg = dnp3_sample[np.random.randint(len(dnp3_sample))]
+                dataflow.append(', '.join(self.ip, dest.ip, dnp3msg, dt.datetime.now().strftime('%m/%d/%Y-%H:%M:%S.%f'),
+                                          '1', self.mac, dest.mac))
 
         return dataflow
 
