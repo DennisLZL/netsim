@@ -1,0 +1,10 @@
+{protocol:dnp3,func:21,obj:"{0x3c02,0x3c03,0x3c04}"}{protocol:dnp3,func:3,obj:"{3073}"}
+{protocol:dnp3,func:129,obj:"{10498}"}
+{protocol:dnp3,func:1,obj:"{15362,15363,15364,2560}"}
+{protocol:dnp3,func:1,obj:"{15362,15363,15364,15361}"}
+{protocol:dnp3,func:1,obj:"{15362,15363,15364}"}
+{protocol:dnp3,func:1,obj:"{15362,15363,15364,2560}"}
+{protocol:dnp3,func:3,obj:"{10498}"}
+{protocol:dnp3,func:1,obj:"{512}"}
+{protocol:dnp3,func:1,obj:"{15362,15363,15364,10240}"}
+{protocol:dnp3,func:21,obj:"{0x3c02,0x3c03,0x3c04}"}

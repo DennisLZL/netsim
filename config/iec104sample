@@ -1,0 +1,6 @@
+{protocol:iec104,asdu_type:107,causetx_type:30}
+{protocol:iec104,asdu_type:50,causetx_type:6}
+{protocol:iec104,asdu_type:50,causetx_type:7}
+{protocol:iec104,asdu_type:107,causetx_type:30}
+{protocol:iec104,asdu_type:49,causetx_type:7}
+{protocol:iec104,asdu_type:45,causetx_type:6}

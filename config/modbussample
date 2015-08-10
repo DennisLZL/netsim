@@ -1,0 +1,9 @@
+{protocol:modbus,func:1}
+{protocol:modbus,func:2}
+{protocol:modbus,func:3}
+{protocol:modbus,func:99}
+{protocol:modbus,func:5,startaddr:1031,endaddr:1031}
+{protocol:modbus,func:5,startaddr:1024,endaddr:1024}
+{protocol:modbus,func:3,startaddr:1000,endaddr:1}
+{protocol:modbus,func:1,length:22,type:good}
+{protocol:modbus,func:1,length:32,type:good}

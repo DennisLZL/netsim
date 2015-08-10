@@ -5,38 +5,7 @@ from scipy.stats import rv_discrete
 import datetime as dt
 
 
-protocols = ['iec104', 'modbus', 'dnp3', 'BX_03', 'BX_04', 'BX_13', 'opcda',
-             'profinetio', 'TIAS_TETRA', 's7', 'mms', 'udp', 'icmp', 'ftp', 'tcp']
-
-iec104_sample = ['{protocol:iec104,asdu_type:107,causetx_type:30}',
-           '{protocol:iec104,asdu_type:50,causetx_type:6}',
-           '{protocol:iec104,asdu_type:50,causetx_type:7}',
-           '{protocol:iec104,asdu_type:107,causetx_type:30}',
-           '{protocol:iec104,asdu_type:49,causetx_type:7}',
-           '{protocol:iec104,asdu_type:45,causetx_type:6}']
-
-modbus_sample = ['{protocol:modbus,func:1}',
-                 '{protocol:modbus,func:2}',
-                 '{protocol:modbus,func:3}',
-                 '{protocol:modbus,func:99}',
-                 '{protocol:modbus,func:5,startaddr:1031,endaddr:1031}',
-                 '{protocol:modbus,func:5,startaddr:1024,endaddr:1024}',
-                 '{protocol:modbus,func:3,startaddr:1000,endaddr:1}',
-                 '{protocol:modbus,func:1,length:22,type:good}',
-                 '{protocol:modbus,func:1,length:32,type:good}']
-
-dnp3_sample = ['{protocol:dnp3,func:21,obj:"{0x3c02,0x3c03,0x3c04}"}'
-               '{protocol:dnp3,func:3,obj:"{3073}"}',
-               '{protocol:dnp3,func:129,obj:"{10498}"}',
-               '{protocol:dnp3,func:1,obj:"{15362,15363,15364,2560}"}',
-               '{protocol:dnp3,func:1,obj:"{15362,15363,15364,15361}"}',
-               '{protocol:dnp3,func:1,obj:"{15362,15363,15364}"}',
-               '{protocol:dnp3,func:1,obj:"{15362,15363,15364,2560}"}',
-               '{protocol:dnp3,func:3,obj:"{10498}"}',
-               '{protocol:dnp3,func:1,obj:"{512}"}',
-               '{protocol:dnp3,func:1,obj:"{15362,15363,15364,10240}"}',
-               '{protocol:dnp3,func:21,obj:"{0x3c02,0x3c03,0x3c04}"}']
-
+protocols = ['iec104', 'modbus', 'dnp3', 'opcda', 'profinetio', 'TIAS_TETRA', 's7', 'mms', 'udp', 'icmp', 'ftp', 'tcp']
 
 # network node
 class Node:
@@ -68,22 +37,24 @@ class Node:
             protocol = commpro[proid[i]]
 
             if protocol == 'iec104':
-                iec104msg = iec104_sample[np.random.randint(len(iec104_sample))]
-                dataflow.append(', '.join([self.ip, dest.ip, iec104msg, dt.datetime.now().strftime('%m/%d/%Y-%H:%M:%S.%f'),
-                                      '1', self.mac, dest.mac]))
-                dataflow.append(', '.join([dest.ip, self.ip, iec104msg, dt.datetime.now().strftime('%m/%d/%Y-%H:%M:%S.%f'),
-                                      '1', dest.mac, self.mac]))
+                msg = iec104_sample[np.random.randint(len(iec104_sample))]
+
             if protocol == 'modbus':
-                modbusmsg = modbus_sample[np.random.randint(len(modbus_sample))]
-                dataflow.append(', '.join([self.ip, dest.ip, modbusmsg, dt.datetime.now().strftime('%m/%d/%Y-%H:%M:%S.%f'),
-                                      '1', self.mac, dest.mac]))
-                dataflow.append(', '.join([dest.ip, self.ip, modbusmsg, dt.datetime.now().strftime('%m/%d/%Y-%H:%M:%S.%f'),
-                                      '1', dest.mac, self.mac]))
+                msg = modbus_sample[np.random.randint(len(modbus_sample))]
 
             if protocol == 'dnp3':
-                dnp3msg = dnp3_sample[np.random.randint(len(dnp3_sample))]
-                dataflow.append(', '.join(self.ip, dest.ip, dnp3msg, dt.datetime.now().strftime('%m/%d/%Y-%H:%M:%S.%f'),
-                                          '1', self.mac, dest.mac))
+                msg = dnp3_sample[np.random.randint(len(dnp3_sample))]
+
+            if protocol == 'opcda':
+                msg = opcda_sample[np.random.randint(len(opcda_sample))]
+
+            if protocol == 'profinetio':
+                msg = profinetio_sample[np.random.randint(len(profinetio_sample))]
+
+            dataflow.append(', '.join([self.ip, dest.ip, msg, dt.datetime.now().strftime('%m/%d/%Y-%H:%M:%S.%f'),
+                                       '1', self.mac, dest.mac]))
+            dataflow.append(', '.join([dest.ip, self.ip, msg, dt.datetime.now().strftime('%m/%d/%Y-%H:%M:%S.%f'),
+                                       '1', dest.mac, self.mac]))
 
         return dataflow
 
@@ -108,11 +79,29 @@ def macList(n):
     return mac_list
 
 if __name__ == '__main__':
-    ips = ipList(2)
-    macs = macList(2)
-    node1 = Node(ips[0], macs[0], {'tcp': 1., 'iec104': 1., 'modbus': 1.}, 'workStation')
-    node2 = Node(ips[1], macs[1], {'iec104': 1., 'modbus': 1.}, 'PLC')
+    # ips = ipList(2)
+    # macs = macList(2)
+    # node1 = Node(ips[0], macs[0], {'tcp': 1., 'iec104': 1., 'modbus': 1.}, 'workStation')
+    # node2 = Node(ips[1], macs[1], {'iec104': 1., 'modbus': 1.}, 'PLC')
+    #
+    # data = node1.commMsg(node2)
+    # for m in data:
+    #     print m
 
-    data = node1.commMsg(node2)
-    for m in data:
-        print m
+    # with open('config/profinetiosample', 'w') as f:
+    #     for item in profinetio_sample:
+    #         f.write('%s\n' % item)
+
+    with open('config/iec104sample', 'r') as f:
+        iec104_sample = f.read().splitlines()
+    with open('config/modbussample', 'r') as f:
+        modbus_sample = f.read().splitlines()
+    with open('config/opcdasample', 'r') as f:
+        opcda_sample = f.read().splitlines()
+    with open('config/profinetiosample') as f:
+        profinetio_sample = f.read().splitlines()
+
+    print iec104_sample
+    print modbus_sample
+    print opcda_sample
+    print profinetio_sample

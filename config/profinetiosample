@@ -1,0 +1,8 @@
+{protocol:profinetio,uuid:dea000016c9711d1827100a02442df7d,opnum:0}
+{protocol:profinetio,uuid:dea000016c9711d1827100a02442df7d,opnum:0}
+{protocol:profinetio,uuid:dea000016c9711d1827100a02442df7d,opnum:3,blocktype:0x0008}
+{protocol:profinetio,uuid:dea000016c9711d1827100a02442df7d,opnum:3}
+{protocol:profinetio,uuid:dea000016c9711d1827100a02442df7d,opnum:4,blocktype:0x0110}
+{protocol:profinetio,uuid:dea000016c9711d1827100a02442df7d,opnum:4}
+{protocol:profinetio,uuid:dea000016c9711d1827100a02442df7d,opnum:0,blocktype:0x0101-0x0102-0x0102-0x0104-0x0104-0x0104-0x0103}
+{protocol:profinetio,uuid:dea000016c9711d1827100a02442df7d,opnum:5,blocktype:0x0009}
