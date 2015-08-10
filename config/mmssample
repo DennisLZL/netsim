@@ -1,0 +1,8 @@
+{protocol:mms,pduType:1,ServiceRequest:2}
+{protocol:mms,pduType:1,ServiceRequest:7}
+{protocol:mms,pduType:9}
+{protocol:mms,pduType:1,ServiceRequest:6}
+{protocol:mms,pduType:1,ServiceRequest:5}
+{protocol:mms,pduType:1,ServiceRequest:2}
+{protocol:mms,pduType:9}
+{protocol:mms,pduType:1,ServiceRequest:13}

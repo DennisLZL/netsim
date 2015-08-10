@@ -1,0 +1,12 @@
+{protocol:s7,PduType:7,DataType:8,FuncGroupType:7,SubFuncType:1}
+{protocol:s7,PduType:7,DataType:8,FuncGroupType:2,SubFuncType:1}
+{protocol:s7,PduType:7,DataType:4,FuncGroupType:2,SubFuncType:1}
+{protocol:s7,PduType:7,DataType:4,FuncGroupType:2,SubFuncType:4}
+{protocol:s7,PduType:7,DataType:8,FuncGroupType:1,SubFuncType:2}
+{protocol:s7,PduType:7,DataType:8,FuncGroupType:3,SubFuncType:2}
+{protocol:s7,PduType:7,DataType:4,FuncGroupType:3,SubFuncType:2}
+{protocol:s7,PduType:7,DataType:4,FuncGroupType:3,SubFuncType:2}
+{protocol:s7,PduType:7,DataType:8,FuncGroupType:4,SubFuncType:2}
+{protocol:s7,PduType:7,DataType:4,FuncGroupType:4,SubFuncType:2}
+{protocol:s7,PduType:7,DataType:4,FuncGroupType:7,SubFuncType:1}
+{protocol:s7,PduType:7,DataType:8,FuncGroupType:7,SubFuncType:1}
