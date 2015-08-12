@@ -100,6 +100,9 @@ class Network:
         for rule in rules:
             self.net.append(Connection([devices[x-1] for x in rule['zoneA']], [devices[x-1] for x in rule['zoneB']],
                             rule['prodict'], rule['freq']))
+    def toJson(self, filepath):
+        pass
+
 
     def ipList(self, n):
         """
@@ -132,13 +135,16 @@ class Network:
 
 if __name__ == '__main__':
 
+    types = ['ws'] * 13 + ['server'] * 5 + ['plc'] * 12
     rules = [
         {'zoneA': range(1, 7), 'zoneB': range(19, 23), 'prodict': {'modbus': 1, 'iec104': 1, 'opcda': 1}, 'freq': 100},
         {'zoneA': range(1, 7), 'zoneB': range(23, 27), 'prodict': {'modbus': 1, 'iec104': 10, 'opcda': 1}, 'freq': 30}
         ]
-    types = ['ws'] * 13 + ['server'] * 5 + ['plc'] * 12
 
     network = Network(30, types, rules)
 
+    netlist = []
+    for e in network.net:
+        netlist.append(e.toDict())
     with open('config/test.json', 'w') as f:
-        json.dump(network.net[0].toDict(), f, indent=4, sort_keys=True)
+        json.dump(netlist, f, indent=4, sort_keys=True)
