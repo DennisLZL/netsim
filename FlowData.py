@@ -200,7 +200,8 @@ if __name__ == '__main__':
     #     {'zoneA': range(11, 14), 'zoneB': range(27, 31), 'prodict': {'TIAS_TETRA': 1, 's7':1, 'mms': 1}, 'freq': 10},
     #     {'zoneA': range(7, 11), 'zoneB': range(27, 31), 'prodict': {'TIAS_TETRA': 2, 's7':2, 'mms': 2, 'modbus': 1, 'iec104': 1, 'opcda': 1}, 'freq': 50},
     #     {'zoneA': range(11, 14), 'zoneB': range(19, 23), 'prodict': {'opcda': 1}, 'freq': 10},
-    #     {'zoneA': range(11, 14), 'zoneB': range(19, 23), 'prodict': {'udp': 1, 'ftp': 2, 'tcp': 1}, 'freq': 10}
+    #     {'zoneA': range(11, 14), 'zoneB': range(14, 19), 'prodict': {'udp': 1, 'ftp': 2, 'tcp': 1}, 'freq': 10},
+    #     {'zoneA': range(7, 11), 'zoneB': range(14, 19), 'prodict': {'udp': 1, 'ftp': 3, 'tcp': 1}, 'freq': 20}
     #     ]
     #
     # net = Network.easyMake(30, types, rules)
