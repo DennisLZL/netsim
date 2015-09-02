@@ -191,6 +191,8 @@ class Network:
 
 if __name__ == '__main__':
 
+    # 30 devices
+
     # types = ['ws'] * 13 + ['server'] * 5 + ['plc'] * 12
     # rules = [
     #     {'zoneA': range(1, 7), 'zoneB': range(19, 23), 'prodict': {'modbus': 1, 'iec104': 1, 'opcda': 1}, 'freq': 100},
@@ -208,16 +210,41 @@ if __name__ == '__main__':
     #
     # net.toJson('config/config.json')
 
-    net = Network.fileMake('config/config.json')
+    # net = Network.fileMake('config/config.json')
+    #
+    # t0 = dt.datetime.now()
+    # tincr = dt.timedelta(milliseconds=1)
+    # # tn = t0 + dt.timedelta(milliseconds=1500)
+    # tn = t0 + dt.timedelta(minutes=30)
+    # data = net.networkFlowData(t0, tincr, tn)
+    #
+    # with open('resource/flowdata.csv', 'w') as f:
+    #     for line in data[:-1]:
+    #         f.write('%s\n' % line)
+    #     f.write('%s' % data[-1])
+
+    # 100 devices
+
+    # types = ['ws'] * 50 + ['plc'] * 50
+    # rules = [
+    #     {'zoneA': range(1, 21), 'zoneB': range(51, 75), 'prodict': {'modbus':1, 'iec104': 1, 'opcda': 1}, 'freq': 300},
+    #     {'zoneA': range(1, 21), 'zoneB': range(76, 101), 'prodict': {'iec104': 3, 'modbus': 1, 'dnp3': 3, 'opcda': 1}, 'freq': 100},
+    #     {'zoneA': range(21, 51), 'zoneB': range(51, 75), 'prodict': {'TIAS_TETRA': 1, 's7': 1, 'mms': 1}, 'freq': 200},
+    #     {'zoneA': range(21, 51), 'zoneB': range(76, 101), 'prodict': {'TIAS_TETRA': 2, 's7': 2, 'mms': 2, 'modbus': 1, 'iec104': 1, 'opcda': 1}, 'freq': 50}
+    # ]
+    #
+    # net = Network.easyMake(100, types, rules)
+    # net.toJson('config/config100v2.json')
+
+    net = Network.fileMake('config/config100v2.json')
 
     t0 = dt.datetime.now()
     tincr = dt.timedelta(milliseconds=1)
     # tn = t0 + dt.timedelta(milliseconds=1500)
-    tn = t0 + dt.timedelta(minutes=30)
+    tn = t0 + dt.timedelta(minutes=10)
     data = net.networkFlowData(t0, tincr, tn)
 
-    with open('resource/flowdata.csv', 'w') as f:
+    with open('resource/flowdata100v2.csv', 'w') as f:
         for line in data[:-1]:
             f.write('%s\n' % line)
         f.write('%s' % data[-1])
-
